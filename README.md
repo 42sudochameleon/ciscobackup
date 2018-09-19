@@ -18,24 +18,24 @@ import datetime
 
 def mysqlcisco(nl, ip):
     
-    import MySQLdb
+   import MySQLdb
 
-    ts = time.time()
-    st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d')
+   ts = time.time()
+   st = datetime.datetime.fromtimestamp(ts).strftime('%Y-%m-%d')
 
-    st.replace("'", "")
+   st.replace("'", "")
 
-    pfad = str('/backups/') + str(st)
+   pfad = str('/backups/') + str(st)
 
 
-    db = MySQLdb.connect(host="localhost", user="python", passwd="Ammon1ak", db="cisco")
+   db = MySQLdb.connect(host="localhost", user="python", passwd="Ammon1ak", db="cisco")
 
-    cur = db.cursor()
+   cur = db.cursor()
     
-    cur.execute("INSERT INTO conf (niederlassung, datum, ipadresse, pfad) VALUES (%s, %s, %s, %s)", [nl, st, ip, pfad])
+   cur.execute("INSERT INTO conf (niederlassung, datum, ipadresse, pfad) VALUES (%s, %s, %s, %s)", [nl, st, ip, pfad])
 
-    db.commit()
-    db.close()
+   db.commit()
+   db.close()
 
 
 #ip = raw_input("Please enter your IP address: ")
